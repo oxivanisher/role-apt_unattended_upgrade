@@ -1,2 +1,18 @@
 ---
-# tasks file for apt_unattended_upgrade/
+
+- name: install unattended-upgrades package
+  ansible.builtin.package:
+    name: "unattended-upgrades"
+    state: present
+
+- name: adjust APT update intervals
+  ansible.builtin.copy:
+    src: apt_periodic
+    dest: /etc/apt/apt.conf.d/10periodic
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Remove dependencies that are no longer required
+  ansible.builtin.apt:
+    autoremove: yes
