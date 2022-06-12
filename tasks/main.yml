@@ -18,10 +18,10 @@
     path: /etc/apt/apt.conf.d/50unattended-upgrades
     regexp: '^\/\/\s*"\${distro_id}:\${distro_codename}-updates";'
     line: '        "${distro_id}:${distro_codename}-updates";'
-  when: 
+  when:
     - ansible_distribution == 'Ubuntu'
     - "'client' in group_names"
 
 - name: Remove dependencies that are no longer required
   ansible.builtin.apt:
-    autoremove: yes
+    autoremove: true
