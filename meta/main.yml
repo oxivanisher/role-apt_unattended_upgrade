@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: apt_unattended_upgrade
+  namespace: thunderbluff
   author: Marc Urben
   description: Configure unattended updated for Debian based systems
   company: Thunderbluff
