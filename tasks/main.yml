@@ -1,19 +1,19 @@
 ---
 
-- name: install unattended-upgrades package
+- name: Install unattended-upgrades package
   ansible.builtin.package:
     name: "unattended-upgrades"
     state: present
 
-- name: adjust APT update intervals
+- name: Adjust APT update intervals
   ansible.builtin.copy:
     src: apt_periodic
     dest: /etc/apt/apt.conf.d/10periodic
-    mode: 0644
+    mode: "0644"
     owner: root
     group: root
 
-- name: configure automatic updates on ubuntu client systems
+- name: Configure automatic updates on ubuntu client systems
   ansible.builtin.lineinfile:
     path: /etc/apt/apt.conf.d/50unattended-upgrades
     regexp: '^\/\/\s*"\${distro_id}:\${distro_codename}-updates";'
