@@ -23,7 +23,7 @@
     regexp: '^\/\/\s*"\${distro_id}:\${distro_codename}-updates";'
     line: '        "${distro_id}:${distro_codename}-updates";'
   when:
-    - ansible_distribution == 'Ubuntu'
+    - ansible_facts.distribution== 'Ubuntu'
     - "'client' in group_names"
   become: true
   become_user: root
